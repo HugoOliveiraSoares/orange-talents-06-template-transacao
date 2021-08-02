@@ -1,6 +1,6 @@
 package br.com.zupacademy.hugo.transacao.commonkafka;
 
-import br.com.zupacademy.hugo.transacao.model.Transactions;
+import br.com.zupacademy.hugo.transacao.model.Transacoes;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
@@ -35,16 +35,16 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public ConsumerFactory<String, Transactions> transactionConsumerFactory() {
+    public ConsumerFactory<String, Transacoes> transactionConsumerFactory() {
         StringDeserializer stringDeserializer = new StringDeserializer();
-        JsonDeserializer<Transactions> jsonDeserializer = new JsonDeserializer<>(Transactions.class, false);
+        JsonDeserializer<Transacoes> jsonDeserializer = new JsonDeserializer<>(Transacoes.class, false);
 
         return new DefaultKafkaConsumerFactory<>(consumerConfigurations(), stringDeserializer, jsonDeserializer);
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Transactions> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, Transactions> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, Transacoes> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Transacoes> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(transactionConsumerFactory());
 
         return factory;

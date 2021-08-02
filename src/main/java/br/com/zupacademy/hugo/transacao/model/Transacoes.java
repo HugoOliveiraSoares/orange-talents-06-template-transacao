@@ -3,7 +3,8 @@ package br.com.zupacademy.hugo.transacao.model;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Transactions {
+@Entity
+public class Transacoes {
 
     private String id;
     private BigDecimal valor;
@@ -12,10 +13,10 @@ public class Transactions {
     private LocalDateTime efetivadaEm;
 
     @Deprecated
-    public Transactions() {
+    public Transacoes() {
     }
 
-    public Transactions(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDateTime efetivadaEm) {
+    public Transacoes(String id, BigDecimal valor, Estabelecimento estabelecimento, Cartao cartao, LocalDateTime efetivadaEm) {
         this.id = id;
         this.valor = valor;
         this.estabelecimento = estabelecimento;
@@ -45,7 +46,7 @@ public class Transactions {
 
     @Override
     public String toString() {
-        return "Transactions{" +
+        return "Transacoes{" +
                 "id='" + id + '\'' +
                 ", valor=" + valor +
                 ", estabelecimento=" + estabelecimento.toString() +
