@@ -10,7 +10,7 @@ public class Transacoes {
     @Id
     private String id;
     private BigDecimal valor;
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @Embedded
     private Estabelecimento estabelecimento;
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Cartao cartao;

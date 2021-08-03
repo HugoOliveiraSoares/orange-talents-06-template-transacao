@@ -2,12 +2,9 @@ package br.com.zupacademy.hugo.transacao.model;
 
 import javax.persistence.*;
 
-@Entity
+@Embeddable
 public class Estabelecimento {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String nome;
     private String cidade;
     private String endereco;

@@ -1,5 +1,6 @@
 package br.com.zupacademy.hugo.transacao.commonkafka;
 
+import br.com.zupacademy.hugo.transacao.controller.form.TransacoesFORM;
 import br.com.zupacademy.hugo.transacao.model.Transacoes;
 import br.com.zupacademy.hugo.transacao.repository.TransacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ public class TransacaoConsumer {
     private TransacaoRepository transacaoRepository;
 
     @KafkaListener(topics = "${spring.kafka.topic.transactions}")
-    public void ouvir(Transacoes transacoes) {
+    public void ouvir(TransacoesFORM transacoesFORM) {
 
+        Transacoes transacoes = transacoesFORM.toModel();
+        
         transacaoRepository.save(transacoes);
 
     }
