@@ -1,10 +1,15 @@
 package br.com.zupacademy.hugo.transacao.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Cartao {
 
+    @Id
     private String id;
     private String email;
 
+    @Deprecated
     public Cartao() {
     }
 
@@ -21,11 +26,4 @@ public class Cartao {
         return email;
     }
 
-    @Override
-    public String toString() {
-        return "Cartao{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

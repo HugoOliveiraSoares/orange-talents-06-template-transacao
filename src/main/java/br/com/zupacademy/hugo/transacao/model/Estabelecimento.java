@@ -1,11 +1,18 @@
 package br.com.zupacademy.hugo.transacao.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Estabelecimento {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String cidade;
     private String endereco;
 
+    @Deprecated
     public Estabelecimento() {
     }
 
@@ -27,12 +34,4 @@ public class Estabelecimento {
         return endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Estabelecimento{" +
-                "nome='" + nome + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", endereco='" + endereco + '\'' +
-                '}';
-    }
 }

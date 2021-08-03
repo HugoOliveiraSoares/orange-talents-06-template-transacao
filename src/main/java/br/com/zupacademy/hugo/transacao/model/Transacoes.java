@@ -1,14 +1,18 @@
 package br.com.zupacademy.hugo.transacao.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 public class Transacoes {
 
+    @Id
     private String id;
     private BigDecimal valor;
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Estabelecimento estabelecimento;
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Cartao cartao;
     private LocalDateTime efetivadaEm;
 
@@ -44,14 +48,4 @@ public class Transacoes {
         return efetivadaEm;
     }
 
-    @Override
-    public String toString() {
-        return "Transacoes{" +
-                "id='" + id + '\'' +
-                ", valor=" + valor +
-                ", estabelecimento=" + estabelecimento.toString() +
-                ", cartao=" + cartao.toString() +
-                ", efetivadaEm=" + efetivadaEm +
-                '}';
-    }
 }
